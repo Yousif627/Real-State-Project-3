@@ -10,6 +10,7 @@ import LogoutButton from './components/Auth/LogoutButton/LogoutButton'
 import ProtectedRoute from './components/Auth/ProtectedRoute/ProtectedRoute'
 
 //Area
+import AreasList from './components/AreaList/AreaList'
 
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
           <Route path="/signup" element={<SignUp />} />
+
+          {/* Auth */}
+          <Route path="/Areas" element={<AreasList />} />
 
         </Routes>
       </div>
