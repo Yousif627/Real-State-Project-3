@@ -67,7 +67,6 @@ function App() {
         </Routes>
       </div>
     </Router>
-
     {/* <button onClick={handleShowForm}>New Property</button>
     {formIsShown ? <PropertyForm editProperty={editProperty} setEditProperty={setEditProperty} setFormIsShown={setFormIsShown} setProperty={setProperty}/> :null} */}
 

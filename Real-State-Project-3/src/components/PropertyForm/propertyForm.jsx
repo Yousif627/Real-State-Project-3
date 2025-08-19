@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import {useParams} from "react-dom"
+import {useParams} from "react-router"
 import { crateProperty, getAllProperty,updateProperty, showProperty} from "../../../lib/PropertyApi"
 
 
