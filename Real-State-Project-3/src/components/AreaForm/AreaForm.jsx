@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-// import { create } from "";
+import { create } from "../../../lib/api";
 
 const AreaForm = ({ setFormIsShown }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,7 +23,6 @@ const AreaForm = ({ setFormIsShown }) => {
     setIsSubmitting(true);
 
     const response = await create(formData);
-    console.log(response);
     if (response.status === 201) {
       setFormIsShown(false);
     }
