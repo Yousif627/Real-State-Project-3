@@ -30,7 +30,7 @@ function AreasList() {
           return(
           <>
           <img src={Location.img}/>
-          <li>{Location.Area}</li>;
+          <li>{Location.Area}</li>
           </> 
           )
         })}
