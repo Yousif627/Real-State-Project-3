@@ -13,10 +13,10 @@ const create = async (data) => {
     }
 }
 
-const deleteArea = async (id) => {
+const updateArea = async (id) => {
     try {
         const url = `${baseUrl}/area/${id}`
-        const response = await axios.delete(url)
+        const response = await axios.put(url)
         return response
     } catch (error) {
         return error
@@ -26,5 +26,5 @@ const deleteArea = async (id) => {
 
 export {
     create,
-    deleteArea
+    updateArea
 }
