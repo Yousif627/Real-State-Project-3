@@ -21,13 +21,13 @@ function AreasList() {
   useEffect(() => {
     fetchData();
   }, []);
-  
+
   if (!Areas) return <p>No data yet (login first)</p>;
   return (
     <>
       <ul>
-        {Areas.map((Area) => {
-          return <li>{Area.area}</li>;
+        {Areas.map((Location) => {
+          return <li>{Location.Area}</li>;
         })}
       </ul>
       <p style={{ color: "darkred" }}>{errors}</p>
