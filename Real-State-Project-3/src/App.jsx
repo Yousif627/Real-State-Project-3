@@ -48,6 +48,7 @@ function App() {
   }
 
   return (
+    <>
     <Router>
       <div>
         {token ? <LogoutButton onLogout={handleLogout} /> : null}
@@ -57,18 +58,20 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
 
           {/* Area */}
-
-          <button onClick={handleShowForm}>New Property</button>
-          {formIsShown ? <PropertyForm editProperty={editProperty} setEditProperty={setEditProperty} setFormIsShown={setFormIsShown} setProperty={setProperty}/> :null}\
-          <PropertyList property={property} setProperty={setProperty} setEditProperty={setEditPropertyHandler}/>
-
+  
           <Route path="/AreaForm" element={<AreaForm />} />
           <Route path="/areas" element={<AreasList />} />
-
-
+          <Route path="/property" element={<PropertyList property={property} setProperty={setProperty} setEditProperty={setEditPropertyHandler}/>}/>
+          <Route path="/property/new" element={<PropertyForm editProperty={editProperty} setEditProperty={setEditProperty} setFormIsShown={setFormIsShown} setProperty={setProperty} />}/>
+        
         </Routes>
       </div>
     </Router>
+
+    {/* <button onClick={handleShowForm}>New Property</button>
+    {formIsShown ? <PropertyForm editProperty={editProperty} setEditProperty={setEditProperty} setFormIsShown={setFormIsShown} setProperty={setProperty}/> :null} */}
+
+    </>
   )
 }
 export default App
