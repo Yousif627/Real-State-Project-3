@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-
-// import { create } from "";
+import { useNavigate } from 'react-router'
+import { create } from "../../../lib/api";
 
 const AreaForm = ({ setFormIsShown }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     img: "",
     Area: "",
@@ -21,9 +22,8 @@ const AreaForm = ({ setFormIsShown }) => {
 
     if (isSubmitting) return;
     setIsSubmitting(true);
-
+    navigate('/areas')
     const response = await create(formData);
-    console.log(response);
     if (response.status === 201) {
       setFormIsShown(false);
     }
@@ -38,7 +38,8 @@ const AreaForm = ({ setFormIsShown }) => {
         <label htmlFor="Area">Area:</label>
         <input type="text" id="Area" name="Area" onChange={handleChange} value={formData.Area} />
 
-        <button type="submit">Add New Area</button>
+        <button type="submit" >Add New Area</button>
+        
       </form>
     </div>
   );

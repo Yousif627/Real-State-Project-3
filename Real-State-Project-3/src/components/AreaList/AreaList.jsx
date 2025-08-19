@@ -27,7 +27,12 @@ function AreasList() {
     <>
       <ul>
         {Areas.map((Location) => {
-          return <li>{Location.Area}</li>;
+          return(
+          <>
+          <img src={Location.img}/>
+          <li>{Location.Area}</li>;
+          </> 
+          )
         })}
       </ul>
       <p style={{ color: "darkred" }}>{errors}</p>
