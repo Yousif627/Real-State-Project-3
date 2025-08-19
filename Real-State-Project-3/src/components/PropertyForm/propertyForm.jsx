@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import {useParams} from "react-router"
 import { crateProperty, getAllProperty,updateProperty, showProperty} from "../../../lib/PropertyApi"
 
 
@@ -16,8 +15,6 @@ const [formData, setFormData]= useState({
     bathrooms:"",
     createdAt:"",
 })
-
-const {areaId , propertyId} = useParams();
 
 const handleChange = (event)=>{
     setFormData({...formData, [event.target.name]: event.target.vaue})
