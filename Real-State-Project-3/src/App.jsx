@@ -35,11 +35,10 @@ function App() {
       <div>
         {token ? <LogoutButton onLogout={handleLogout} /> : null}
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
           <Route path="/signup" element={<SignUp />} />
 
-          {/* Auth */}
+          {/* Area */}
           <Route path="/Areas" element={<AreasList />} />
 
         </Routes>
