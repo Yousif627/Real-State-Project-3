@@ -9,14 +9,30 @@ import SignUp from './components/Auth/SignupForm/SignupForm'
 import LogoutButton from './components/Auth/LogoutButton/LogoutButton'
 import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/Auth/ProtectedRoute/ProtectedRoute'
+import PropertyList from "./components/PropertyList/propertyList";
+import PropertyForm from "./components/PropertyForm/propertyForm";
 
 //Area
 import AreasList from './components/AreaList/AreaList'
 import AreaForm from './components/AreaForm/AreaForm'
+import PropertyDetails from './components/PropertyDetails/PropertyDetails'
 
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'))
+  const[property, setProperty]= useState([])
+  const[editProperty, setEditProperty] = useState(null)
+  const[formIsShown, setFormIsShown]= useState(false)
+  
+  const handleShowForm=()=>{
+    setFormIsShown(true)
+
+  }
+
+  const setEditPropertyHandler = (property)=>{
+    setEditProperty(property)
+    setFormIsShown(true)
+  }
 
   function handleLogin(newToken) {
     setToken(newToken)
@@ -33,6 +49,7 @@ function App() {
   }
 
   return (
+    <>
     <Router>
       <div>
         {token ? <LogoutButton onLogout={handleLogout} /> : null}
@@ -42,14 +59,21 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
 
           {/* Area */}
-
+  
           <Route path="/AreaForm" element={<AreaForm />} />
           <Route path="/areas" element={<AreasList />} />
+          <Route path="/property" element={<PropertyList property={property} setProperty={setProperty} setEditProperty={setEditPropertyHandler}/>}/>
+          <Route path="/property/new" element={<PropertyForm editProperty={editProperty} setEditProperty={setEditProperty} setFormIsShown={setFormIsShown} setProperty={setProperty} AreasList={AreasList}/>}/>
+          <Route path="/propert/:propertyId" element={<PropertyDetails property={property} setProperty={setProperty} />}></Route>
 
-
+        
         </Routes>
       </div>
     </Router>
+    {/* <button onClick={handleShowForm}>New Property</button>
+    {formIsShown ? <PropertyForm editProperty={editProperty} setEditProperty={setEditProperty} setFormIsShown={setFormIsShown} setProperty={setProperty}/> :null} */}
+
+    </>
   )
 }
 export default App

@@ -1,0 +1,75 @@
+
+.areas-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e3c72;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+}
+
+
+ul li {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 0.8rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1e3c72;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+ul li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+
+ul img {
+  width: 100%;
+  max-width: 160px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform 0.2s ease;
+}
+
+
+ul img:hover {
+  transform: scale(1.05);
+}
+
+
+ul span {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2a5298;
+}
+
+
+.error-message {
+  text-align: center;
+  color: darkred;
+  margin-top: 1rem;
+  font-weight: 500;
+}

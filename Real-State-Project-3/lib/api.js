@@ -5,7 +5,7 @@ const baseUrl = import.meta.env.VITE_BACKEND_URL
 
 const create = async (data) => {
     try {
-        const url = `${baseUrl}area/new`
+        const url = `${baseUrl}/area/new`
         const response = await axios.post(url, data)
         return response
     } catch (error) {
