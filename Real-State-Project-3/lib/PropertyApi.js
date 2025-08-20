@@ -1,5 +1,5 @@
 import axios from "axios";
-const origin = import.meta.env.VITE_BACK_END_SERVER_URL
+const origin = import.meta.env.VITE_BACKEND_URL
 
 
 const getAllProperty = async()=>{
@@ -14,11 +14,12 @@ const getAllProperty = async()=>{
 
 const crateProperty = async (data) =>{
     try{
+        console.log('data is passed here from property form: ', data)
         const url = `${origin}/property/new`
         const response = await axios.post(url, data)
-        return response.data
+        return response
     }catch(error){
-        console.log('Failed to create property')
+        console.log(error)
     }
 }
 
@@ -35,7 +36,7 @@ const showProperty = async (propertyId)=>{
 
 const updateProperty = async(propertyId,data) =>{
     try{
-        const url = `${origin}/property/${propertyId}/update`
+        const url = `${origin}/property/${propertyId}`
         const response = await axios.put(url,data)
         return response.data
     }catch(error){
@@ -45,7 +46,7 @@ const updateProperty = async(propertyId,data) =>{
 
 const deleteProperty = async (id)=>{
     try{
-        const url = `${origin}/property/${id}/delete`
+        const url = `${origin}/property/${id}`
         const response = await axios.delete(url)
         return response.data
     }catch(error){

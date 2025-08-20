@@ -1,0 +1,84 @@
+
+.auth-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  font-family: Arial, sans-serif;
+}
+
+
+.auth-left {
+  flex: 1;
+  background: url('https://www.propertymanagementconsulting.com/hubfs/Stock%20images/Real%20estate%20agent%20offer%20house%20represented%20by%20model.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.auth-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+
+.auth-card {
+  width: 100%;
+  max-width: 350px;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+
+.auth-card input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.auth-card button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.auth-card button:hover {
+  background-color: #2980b9;
+}
+
+
+.auth-card p span {
+  color: #3498db;
+  cursor: pointer;
+}
+
+.auth-card p span:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+  }
+
+  .auth-left {
+    height: 200px;
+    width: 100%;
+  }
+
+  .auth-right {
+    flex: none;
+    width: 100%;
+  }
+}

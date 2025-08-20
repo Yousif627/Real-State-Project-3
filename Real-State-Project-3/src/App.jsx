@@ -15,6 +15,7 @@ import PropertyForm from "./components/PropertyForm/propertyForm";
 //Area
 import AreasList from './components/AreaList/AreaList'
 import AreaForm from './components/AreaForm/AreaForm'
+import PropertyDetails from './components/PropertyDetails/PropertyDetails'
 
 
 function App() {
@@ -62,7 +63,9 @@ function App() {
           <Route path="/AreaForm" element={<AreaForm />} />
           <Route path="/areas" element={<AreasList />} />
           <Route path="/property" element={<PropertyList property={property} setProperty={setProperty} setEditProperty={setEditPropertyHandler}/>}/>
-          <Route path="/property/new" element={<PropertyForm editProperty={editProperty} setEditProperty={setEditProperty} setFormIsShown={setFormIsShown} setProperty={setProperty} />}/>
+          <Route path="/property/new" element={<PropertyForm editProperty={editProperty} setEditProperty={setEditProperty} setFormIsShown={setFormIsShown} setProperty={setProperty} AreasList={AreasList}/>}/>
+          <Route path="/propert/:propertyId" element={<PropertyDetails property={property} setProperty={setProperty} />}></Route>
+
         
         </Routes>
       </div>

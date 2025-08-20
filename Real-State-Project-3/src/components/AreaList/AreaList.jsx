@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router";
+import "./AreaList.css";  
 
 function AreasList() {
   const [Areas, setAreas] = useState(null);
@@ -14,7 +16,7 @@ function AreasList() {
       });
       setAreas(res.data);
     } catch (err) {
-      setErrors(err, "Unauthorized or error fetching data");
+      setErrors("Unauthorized or error fetching data");
     }
   }
 
@@ -25,17 +27,18 @@ function AreasList() {
   if (!Areas) return <p>No data yet (login first)</p>;
   return (
     <>
+      <h2 className="areas-title">Available Areas</h2>
       <ul>
-        {Areas.map((Location) => {
-          return(
-          <>
-          <img src={Location.img}/>
-          <li>{Location.Area}</li>
-          </> 
-          )
-        })}
+        {Areas.map((Location) => (
+          <li key={Location.Area}>
+            <Link to="/property">
+              <img src={Location.img} alt={Location.Area} />
+              <span>{Location.Area}</span>
+            </Link>
+          </li>
+        ))}
       </ul>
-      <p style={{ color: "darkred" }}>{errors}</p>
+      <p className="error-message">{errors}</p>
     </>
   );
 }
