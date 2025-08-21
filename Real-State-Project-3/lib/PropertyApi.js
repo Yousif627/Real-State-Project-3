@@ -36,6 +36,7 @@ const showProperty = async (propertyId)=>{
 
 const updateProperty = async(propertyId,data) =>{
     try{
+        console.log("propertyId: ",propertyId)
         const url = `${origin}/property/${propertyId}`
         const response = await axios.put(url,data)
         return response.data

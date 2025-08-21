@@ -1,13 +1,16 @@
 import { useEffect } from "react";
-import { getAllProperty, deleteProperty, updateProperty } from "../../../lib/PropertyApi";
+import { getAllProperty, deleteProperty, updateProperty , showProperty} from "../../../lib/PropertyApi";
 import "./PropertyList.css"; 
+import { Link } from "react-router";
+import { useParams } from "react-router";
 
 const PropertyList = ({ property, setProperty }) => {
+
+    const { propertyId } = useParams(); 
 
   const getProperty = async () => {
     const propertys = await getAllProperty();
     setProperty(propertys);
-    console.log(propertys);
   };
 
   const removeProperty = async (propertyId) => {
@@ -15,13 +18,15 @@ const PropertyList = ({ property, setProperty }) => {
     getProperty();
   };
 
-  const updatedProperty = async (propertyId) => {
-    await updateProperty(propertyId);
-  };
 
   useEffect(() => {
     getProperty();
-  }, []);
+    const fetchProperty = async () => {
+        const propertyData = await showProperty(propertyId);
+        setProperty(propertyData);
+    }
+    fetchProperty();
+  }, [propertyId]);
 
   return (
     <div className="property-list">
@@ -39,11 +44,13 @@ const PropertyList = ({ property, setProperty }) => {
             <p className="property-date">Published on: {new Date(prop.createdAt).toLocaleDateString()}</p>
           </div>
           <div className="property-actions">
-            <button className="btn edit-btn" onClick={() => updatedProperty(prop._id)}>Edit</button>
+            <Link className="btn edit-btn" to={`/property/${prop._id}`}>Edit</Link>
             <button className="btn delete-btn" onClick={() => removeProperty(prop._id)}>Delete</button>
           </div>
         </div>
       )) : <h1>Loading...</h1>}
+
+
     </div>
   );
 };
