@@ -1,24 +1,55 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react";
-import { showProperty } from "../../../lib/PropertyApi";
+import { useParams } from "react-router";
+import { showProperty , updateProperty , getAllProperty} from "../../../lib/PropertyApi";
 import PropertyForm from "../PropertyForm/propertyForm";
+import { useNavigate } from "react-router"
 
-const PropertyDetails = ({ property, setProperty }) => {
+const PropertyDetails = ({ setFormIsShown }) => {
+
+    const [property, setProperty] = useState(null)
+      const [formData, setFormData] = useState({
+    area: "",
+    title: "",
+    location: "",
+    description: "",
+    price: "",
+    size: "",
+    img: "",
+    bedrooms: "",
+    bathrooms: "",
+    createdAt: "",
+  })
+   const navigate = useNavigate()
+
     const params = useParams();
 
-    const getProperty = async (propertyId) => {
-        const foundProperty = await showProperty(propertyId)
-        setProperty(foundProperty)
+    const getProperty = async () => {
+        const foundProperty = await showProperty(params.propertyId)
+        console.log(foundProperty)
+        setProperty(foundProperty.data)
+        setFormData(foundProperty)
+            console.log(params.propertyId)
+
     }
     const handleChange = (event) => {
         setFormData({ ...formData, [event.target.name]: event.target.value })
     }
+
+    const handleSubmit = async (event) => {
+        console.log("HANDLE SUBMIT")
+    event.preventDefault()
+    console.log(params.propertyId)
+    await updateProperty(params.propertyId,formData)
+    console.log(formData)
+    navigate('/property')
+  }
+
     useEffect(() => {
-        getProperty
-    }, [])
+        getProperty()
+    }, [property])
     return (
         <>
-            <form>
+            <form onSubmit={handleSubmit}>
              <label htmlFor="title">Title:</label>
             <input type="text" name="title" id="title" onChange={handleChange} value={formData.title} />
 
@@ -44,7 +75,8 @@ const PropertyDetails = ({ property, setProperty }) => {
             <input type="number" name="bathrooms" id="bathrooms" onChange={handleChange} value={formData.bathrooms} />
 
             <label htmlFor="createdAt">createdAt:</label>
-            <input type="date" name="createdAt" id="createdAt" onChange={handleChange} value={formData.createdAt} />
+             <input type="date" name="createdAt" id="createdAt" onChange={handleChange} value={formData.createdAt} />
+            <button type="submit" className="submit-btn">Submit</button>
         </form >
         </>
 

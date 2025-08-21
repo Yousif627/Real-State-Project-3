@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import { crateProperty, getAllProperty } from "../../../lib/PropertyApi"
+import { crateProperty, getAllProperty , updateProperty} from "../../../lib/PropertyApi"
 import axios from "axios"
 import { useNavigate } from "react-router"
+import { useParams } from "react-router"
 import "./PropertyForm.css"; 
 
 const PropertyForm = ({ editProperty, setEditProperty, setFormIsShown, setProperty }) => {
