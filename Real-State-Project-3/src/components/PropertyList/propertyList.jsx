@@ -11,6 +11,7 @@ const PropertyList = ({ property, setProperty }) => {
   const getProperty = async () => {
     const propertys = await getAllProperty();
     setProperty(propertys);
+    console.log(propertys);
   };
 
   const removeProperty = async (propertyId) => {
