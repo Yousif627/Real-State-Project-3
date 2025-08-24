@@ -1,12 +1,12 @@
 import { useState } from 'react';
-// import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import axios from 'axios';
 import './Login.css';
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async e => {
     e.preventDefault();
